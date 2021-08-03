@@ -18,7 +18,6 @@ class Statement
       end
       }
     end
-
   end
 
   def balance
