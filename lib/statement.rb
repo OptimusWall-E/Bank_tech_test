@@ -6,6 +6,7 @@ class Statement
   def initialize
     @transactions = []
     @time = Time.new
+    
   end
 
   def print_statement

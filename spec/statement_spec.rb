@@ -10,8 +10,6 @@ describe Statement do
 
   context '#balance' do
     it 'returns the statement balance' do
-      # ledger = Ledger.new
-      # statement = ledger.base_statement
       ledger.deposit(100.00)
       expect(statement.balance).to eq(100.00)
     end
@@ -23,22 +21,16 @@ describe Statement do
     end
 
     it 'prints statement entry including single credit' do
-      ledger = Ledger.new
-      statement = ledger.base_statement
       ledger.deposit(100.00)
       expect(statement.print_statement).to eq "#{time.strftime("%d/%m/%Y")} || 100.00 || || 100.00"
     end
 
     it 'prints statement entry including single debit ' do
-      ledger = Ledger.new
-      statement = ledger.base_statement
       ledger.withdraw(100)
       expect(statement.print_statement).to eq "#{time.strftime("%d/%m/%Y")} || || -100.00 || -100.00"
     end
 
     it 'prints statement entry multiple debits and credits' do
-      ledger = Ledger.new
-      statement = ledger.base_statement
       ledger.deposit(100.00)
       ledger.deposit(100.00)
       ledger.withdraw(50.00)
@@ -46,8 +38,6 @@ describe Statement do
     end
 
     it 'prints today\'s date' do
-      ledger = Ledger.new
-      statement = ledger.base_statement
       ledger.deposit(100.00)
       expect(statement.print_statement).to eq "#{time.strftime("%d/%m/%Y")} || 100.00 || || 100.00"
     end
