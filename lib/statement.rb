@@ -6,10 +6,10 @@ class Statement
   def initialize
     @transactions = []
     @time = Time.new
-    
+    @print_statement = []
   end
 
-  def print_statement
+  def print_transactions
     if @transactions.empty?
       return "#{@time.strftime("%d/%m/%Y")} || credit || debit || balance"
     else @transactions.each { |entry|
