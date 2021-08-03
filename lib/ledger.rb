@@ -7,11 +7,11 @@ class Ledger
   end
 
   def deposit(payin)
-    @base_statement.transactions << payin
+    @base_statement.transactions << payin.round(2)
   end
 
   def withdraw(take)
-    @base_statement.transactions << -take
+    @base_statement.transactions << -take.round(2)
   end
 
 end
