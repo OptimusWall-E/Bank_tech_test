@@ -5,16 +5,17 @@ class Statement
 
   def initialize
     @transactions = []
+    @time = Time.new
   end
 
   def print_statement
     if @transactions.empty?
-      return 'date || credit || debit || balance'
+      return "#{@time.strftime("%d/%m/%Y")} || credit || debit || balance"
     else @transactions.each { |entry|
       if entry > 0 
-        return "date || #{entry.to_i.to_s}.00 || || #{balance.to_i.to_s}.00"
+        return "#{@time.strftime("%d/%m/%Y")} || #{entry.to_i.to_s}.00 || || #{balance.to_i.to_s}.00"
       elsif entry < 0
-        return "date || || #{entry.to_i.to_s}.00 || #{balance.to_i.to_s}.00"
+        return "#{@time.strftime("%d/%m/%Y")} || || #{entry.to_i.to_s}.00 || #{balance.to_i.to_s}.00"
       end
       }
     end
