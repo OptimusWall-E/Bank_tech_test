@@ -1,7 +1,7 @@
 require 'ledger.rb'
 
 describe Ledger do
-
+  let (:statement) {Statement.new}
   context '#balance' do
     it 'shows a balance of zero' do
       expect(subject.balance).to eq 0.00
@@ -10,13 +10,13 @@ describe Ledger do
 
   context '#deposit' do
     it 'adds money to the balance' do
-      expect(subject.deposit(100.00)).to eq 100.00
+      expect(subject.deposit(100.00)[0]).to eq 100.00
     end
   end
 
   context '#withdrawal' do
     it 'deducts money from balance' do
-      expect(subject.withdraw(100.00)).to eq -100.00
+      expect(subject.withdraw(-100.00)[0]).to eq -100.00
     end
   end
 
