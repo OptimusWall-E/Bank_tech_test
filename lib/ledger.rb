@@ -1,17 +1,17 @@
 class Ledger
-  attr_reader :balance, :statement
+  attr_reader :balance
+  attr_accessor :base_statement
 
   def initialize
-    @balance = 0.00
-    @statement = Statement.new
+    @base_statement = Statement.new
   end
 
   def deposit(payin)
-    @statement.transactions << payin
+    @base_statement.transactions << payin
   end
 
   def withdraw(take)
-    @statement.transactions << take
+    @base_statement.transactions << -take
   end
 
 end

@@ -9,6 +9,9 @@ class Statement
 
   def print_statement
     p 'date || credit || debit || balance'
+  end
 
+  def balance
+    @transactions.sum
   end
 end
