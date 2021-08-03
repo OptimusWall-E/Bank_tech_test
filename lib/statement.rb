@@ -8,7 +8,17 @@ class Statement
   end
 
   def print_statement
-    p 'date || credit || debit || balance'
+    if @transactions.empty?
+      return 'date || credit || debit || balance'
+    else @transactions.each { |entry|
+      if entry > 0 
+        return "date || #{entry.to_s} || || #{balance.to_s}"
+      elsif entry < 0
+        return "date || || #{entry.to_s}  || #{balance.to_s}"
+      end
+      }
+    end
+
   end
 
   def balance
