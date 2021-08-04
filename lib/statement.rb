@@ -1,12 +1,12 @@
 require_relative 'ledger.rb'
 
 class Statement
-  attr_reader :transactions
+  attr_reader :transactions, :statement, :time
 
   def initialize
     @transactions = []
     @time = Time.new
-    @print_statement = []
+    @statement = []
   end
 
   def print_transactions
@@ -14,9 +14,9 @@ class Statement
       return "#{@time.strftime("%d/%m/%Y")} || credit || debit || balance"
     else @transactions.each { |entry|
       if entry > 0 
-        return "#{@time.strftime("%d/%m/%Y")} || #{entry.to_i.to_s}.00 || || #{balance.to_i.to_s}.00"
+        @statement << "#{@time.strftime("%d/%m/%Y")} || #{entry.to_i.to_s}.00 || || #{balance.to_i.to_s}.00"
       elsif entry < 0
-        return "#{@time.strftime("%d/%m/%Y")} || || #{entry.to_i.to_s}.00 || #{balance.to_i.to_s}.00"
+        @statement << "#{@time.strftime("%d/%m/%Y")} || || #{entry.to_i.to_s}.00 || #{balance.to_i.to_s}.00"
       end
       }
     end
@@ -24,5 +24,12 @@ class Statement
 
   def balance
     @transactions.sum
+  end
+
+  def print_statement
+    p "#{time.strftime("%d/%m/%Y")} || credit || debit || balance"
+    @statement.each do |record|
+      p record
+    end
   end
 end
