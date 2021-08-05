@@ -9,14 +9,14 @@ class Statement
     @statement = []
   end
 
-  def print_transactions
+  def log_transactions
     if @transactions.empty?
       return "#{@time.strftime("%d/%m/%Y")} || credit || debit || balance"
     else @transactions.each { |entry|
       if entry > 0 
-        @statement << "#{@time.strftime("%d/%m/%Y")} || #{entry.to_i.to_s}.00 || || #{balance.to_i.to_s}.00"
+        @statement.prepend("#{@time.strftime("%d/%m/%Y")} || #{entry.to_i.to_s}.00 || || #{balance.to_i.to_s}.00")
       elsif entry < 0
-        @statement << "#{@time.strftime("%d/%m/%Y")} || || #{entry.to_i.to_s}.00 || #{balance.to_i.to_s}.00"
+        @statement.prepend("#{@time.strftime("%d/%m/%Y")} || || #{entry.to_i.to_s}.00 || #{balance.to_i.to_s}.00")
       end
       }
     end
@@ -27,9 +27,10 @@ class Statement
   end
 
   def print_statement
-    p "#{time.strftime("%d/%m/%Y")} || credit || debit || balance"
+    p "date || credit || debit || balance"
     @statement.each do |record|
       p record
     end
   end
 end
+
