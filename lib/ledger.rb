@@ -1,5 +1,4 @@
 class Ledger
-  attr_reader :balance
   attr_accessor :base_statement
 
   def initialize

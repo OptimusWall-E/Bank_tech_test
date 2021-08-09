@@ -16,7 +16,7 @@ describe Statement do
       ledger.deposit(5000.00)
       ledger.withdraw(450.00)
       statement.log_transactions
-      expect(statement.print_statement).to eq "#{time.strftime("%d/%m/%Y")} || || -450.00 || 4700.00"
+      expect(statement.print_statement).to eq "#{time.strftime("%d/%m/%Y")} || || -450.00 || 4700.00, #{time.strftime("%d/%m/%Y")} || || 5000.00 || 5150.00, #{time.strftime("%d/%m/%Y")} || || -50.00 || 150.00, #{time.strftime("%d/%m/%Y")} || || 100.00 || 200.00, #{time.strftime("%d/%m/%Y")} || || 100.00 || 100.00"
     end
   end
 
